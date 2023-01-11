@@ -11,4 +11,8 @@ ingredients : Ingredients[] = [
   new Ingredients('Apples',5),
   new Ingredients('Tomatoes',10)
 ];
+
+onIngredientAdded(ingredient : Ingredients){
+this.ingredients.push(ingredient);
+}
 }
