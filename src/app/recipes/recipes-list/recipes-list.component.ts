@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Recipe } from '../recipe.model';
 
 @Component({
@@ -7,12 +7,15 @@ import { Recipe } from '../recipe.model';
   styleUrls: ['./recipes-list.component.css']
 })
 export class RecipesListComponent {
+  @Output() recipeWasSelected = new EventEmitter<Recipe>(); 
   recpies : Recipe[] = [
-    new Recipe('A Test Recipe',"This is simply a Test",
+    new Recipe('Hydrabadi Dum Biryani',"This is simply a Test",
     "https://i0.wp.com/pixahive.com/wp-content/uploads/2020/10/Biryani-151674-pixahive.jpg"),
-    new Recipe('A Test Recipe',"This is simply a Test",
+    new Recipe('Kolkata Biryani',"This is simply a Test",
     "https://i0.wp.com/pixahive.com/wp-content/uploads/2020/10/Biryani-151674-pixahive.jpg")
   ];
   
-
+  onRecipeSelected(recipe: Recipe){
+    this.recipeWasSelected.emit(recipe);
+  }
 }
